@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<context-param>
+		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+		<param-value>msg</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>javax.servlet.jsp.jstl.fmt.fallbackLocale</param-name>
+		<param-value>en</param-value>
+	</context-param>	
+		
+	<filter>
+        <filter-name>LocaleFilter</filter-name>
+        <filter-class>fr.appendices.web.filter.LocaleFilter</filter-class>
+        <init-param>
+            <param-name>defaultLocale</param-name>
+            <param-value>en</param-value>
+        </init-param>
+        <init-param>
+            <param-name>supportedLocales</param-name>
+            <param-value>en|fr</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>LocaleFilter</filter-name>
+        <url-pattern>*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>appstats</filter-name>
+        <filter-class>com.google.appengine.tools.appstats.AppstatsFilter</filter-class>
+        <init-param>
+            <param-name>logMessage</param-name>
+            <param-value>Appstats available: /appstats/details?time={ID}</param-value>
+        </init-param>
+    </filter>
+    
+    <filter-mapping>
+        <filter-name>appstats</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+	<servlet>
+		<servlet-name>work</servlet-name>
+		<servlet-class>fr.appendices.web.WorkOptimServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>work</servlet-name>
+		<url-pattern>/work</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>play</servlet-name>
+		<servlet-class>fr.appendices.web.PlayOptimServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>play</servlet-name>
+		<url-pattern>/play</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>home</servlet-name>
+		<jsp-file>/dynamic/numero5.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>home</servlet-name>
+		<url-pattern>/index.html</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>add</servlet-name>
+		<jsp-file>/dynamic/add.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>add</servlet-name>
+		<url-pattern>/add.html</url-pattern>
+	</servlet-mapping>
+
+    <servlet>
+        <servlet-name>appstats</servlet-name>
+        <servlet-class>com.google.appengine.tools.appstats.AppstatsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>appstats</servlet-name>
+        <url-pattern>/appstats/*</url-pattern>
+    </servlet-mapping>
+
+    <security-constraint>
+        <web-resource-collection>
+            <url-pattern>/appstats/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+	<security-constraint>
+		<web-resource-collection>
+			<url-pattern>/admin/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
+		<user-data-constraint>
+			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+	
+	<security-constraint>
+		<web-resource-collection>
+			<url-pattern>/profile/*</url-pattern>
+		</web-resource-collection>
+		<user-data-constraint>
+			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+
+    <error-page>
+        <error-code>500</error-code>
+        <location>/dynamic/error.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/dynamic/error.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>403</error-code>
+        <location>/dynamic/error.jsp</location>
+    </error-page>
+ <servlet>
+  <servlet-name>SystemServiceServlet</servlet-name>
+  <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
+  <init-param>
+   <param-name>services</param-name>
+   <param-value/>
+  </init-param>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>SystemServiceServlet</servlet-name>
+  <url-pattern>/_ah/spi/*</url-pattern>
+ </servlet-mapping>
+</web-app>

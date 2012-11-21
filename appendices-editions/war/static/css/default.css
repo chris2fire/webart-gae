@@ -1,0 +1,42 @@
+.form-horizontal .control-group {
+	margin-bottom: 10px;
+}
+
+legend {
+	margin-bottom: 6px;
+}
+
+.row {
+    margin-left: 0px;
+}
+
+h1 {
+    font-size: 25px;
+    line-height: 40px;
+}
+
+.container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
+    width: 960px;
+}
+
+.table {
+    margin-bottom: 0px;
+}
+
+.table thead th {
+    vertical-align: middle;
+}
+
+.table thead tr {
+    height: 50px;
+}
+
+.left-none-margin {
+	margin-left:0px;
+}
+
+
+.right-align {
+	text-align:right;
+	margin-right:20px;
+}
