@@ -104,7 +104,7 @@ function display(containerId, type, value, title, author, id, time) {
 	}
 	
 	if (containerId == 'left') {
-		if (sequenceLeft.length > leftId) {
+		if (sequenceLeft.length > leftId + 1) {
 			leftId = id + 1;
 		} else {
 			leftId = 0; // restart
@@ -115,7 +115,7 @@ function display(containerId, type, value, title, author, id, time) {
 		window.setTimeout(func, time);
 	}
 	if (containerId == 'right') {
-		if (sequenceRight.length > rightId) {
+		if (sequenceRight.length > rightId + 1) {
 			rightId = id + 1;
 		} else {
 			rightId = 0; // restart
