@@ -62,15 +62,15 @@ function playSequences() {
 	
 	$('#playLink').attr('href', '?s=' + token);
 	
-	var func = function() {
+	// var func = function() {
     	display("right", sequenceRight[rightId].type, sequenceRight[rightId].value, sequenceRight[rightId].title, sequenceRight[rightId].author, rightId, sequenceRight[rightId].time);
-	};
-	window.setTimeout(func, 0);
+	// };
+	// window.setTimeout(func, 0);
 
-	var func = function() {
+	// var func = function() {
 		display("left", sequenceLeft[leftId].type, sequenceLeft[leftId].value, sequenceLeft[leftId].title, sequenceLeft[leftId].author, leftId, sequenceLeft[leftId].time);
-	};
-	window.setTimeout(func, 0);
+	// };
+	// window.setTimeout(func, 0);
 	
 }
 
@@ -106,24 +106,26 @@ function display(containerId, type, value, title, author, id, time) {
 	if (containerId == 'left') {
 		if (sequenceLeft.length > leftId + 1) {
 			leftId = id + 1;
+			var func = function() {
+				display("left", sequenceLeft[leftId].type, sequenceLeft[leftId].value, sequenceLeft[leftId].title, sequenceLeft[leftId].author, leftId, sequenceLeft[leftId].time);
+			};
+			window.setTimeout(func, time);
 		} else {
-			leftId = 0; // restart
+			// leftId = 0; // don't restart
 		}
-		var func = function() {
-			display("left", sequenceLeft[leftId].type, sequenceLeft[leftId].value, sequenceLeft[leftId].title, sequenceLeft[leftId].author, leftId, sequenceLeft[leftId].time);
-		};
-		window.setTimeout(func, time);
+
 	}
 	if (containerId == 'right') {
 		if (sequenceRight.length > rightId + 1) {
 			rightId = id + 1;
+			var func = function() {
+		    	display("right", sequenceRight[rightId].type, sequenceRight[rightId].value, sequenceRight[rightId].title, sequenceRight[rightId].author, rightId, sequenceRight[rightId].time);
+			};
+			window.setTimeout(func, time);
 		} else {
-			rightId = 0; // restart
+			// rightId = 0; // don't restart
 		}
-		var func = function() {
-	    	display("right", sequenceRight[rightId].type, sequenceRight[rightId].value, sequenceRight[rightId].title, sequenceRight[rightId].author, rightId, sequenceRight[rightId].time);
-		};
-		window.setTimeout(func, time);
+
 	}	
 }
 

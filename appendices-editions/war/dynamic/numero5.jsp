@@ -27,7 +27,7 @@
 			<div class="row">
 				<div class="span12">
 					<h4>With</h4>
-					<h6>_Appendices_5</h6>
+					<h6>_<a href="http://www.appendices.fr" target="_blank">Appendices</a>_5</h6>
 				</div>
 			</div>
 

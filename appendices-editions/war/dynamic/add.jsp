@@ -27,7 +27,7 @@
 			<div class="row">
 				<div class="span12">
 					<h4>With</h4>
-					<h6>_Appendices_5</h6>
+					<h6>_<a href="http://www.appendices.fr" target="_blank">Appendices</a>_5</h6>
 				</div>
 			</div>
 
@@ -139,7 +139,7 @@
 			<div class="row">
 				<div class="span12">
 					<fmt:message key="home.numero5.open" />
-					<a href="http://todo">http://todo</a><br />
+					<a href="https://github.com/chris2fire/webart-gae">https://github.com/chris2fire/webart-gae</a><br />
 					<fmt:message key="home.numero5.credits" />
 					<em>With</em>, 2012<br />
 					<fmt:message key="home.numero5.copyleft" />
