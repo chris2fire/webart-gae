@@ -14,12 +14,11 @@ function fillSequence(url, jsonp) {
 			if (data != null) {
 				$.each(data, function(key, result) {
 					if (result.length > 0) {
-						$.each(result, function(index) {
-							item = result[index];
-							if (item.seqType == 'L') {
+						$.each(result, function(index, item) {
+							if (item.seqType == "L") {
 						    	sequenceLeft.push({ time: item.seqTime, type: item.type, value : item.value, title: item.title, author: item.author });
 						    }
-						    if (item.seqType == 'R') {
+						    if (item.seqType == "R") {
 						    	sequenceRight.push({ time: item.seqTime, type: item.type, value : item.value, title: item.title, author: item.author });
 						    }
 						});
